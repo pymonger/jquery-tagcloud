@@ -1,5 +1,5 @@
 /*
-* jQuery TagCloud 0.5.0
+* jQuery TagCloud 0.5.1
 * Copyright (c) 2008 Ron Valstar
 * Dual licensed under the MIT and GPL licenses:
 *   http://www.opensource.org/licenses/mit-license.php
@@ -14,7 +14,7 @@
 	// default settings
 	$.tagcloud = {
 		 id: "TagCloud"
-		,version: "0.5.0"
+		,version: "0.5.1"
 		,defaults: {
 			 height: null
 			,type: "cloud"		// "cloud", "list" or "sphere"
@@ -24,6 +24,7 @@
 			,colormin: "B4D2FF"
 			,seed: null			// only for type=="cloud"
 			,power: .5			// only for type=="sphere"
+			,padding: 0
 		}
 	};
 	$.fn.extend({
@@ -89,7 +90,12 @@
 					var iSzFnt = oSettings.sizemin + fPrt*(oSettings.sizemax-oSettings.sizemin);
 					var sColor = colorRng(oSettings.colormin,oSettings.colormax,fPrt);
 					//
-					mLi.css({"fontSize":iSzFnt,position:"absolute",color:"#"+sColor,margin:0,padding:0}).children().css({color:"#"+sColor});
+					mLi.css({"word-wrap":"break-word",
+                             "fontSize":iSzFnt,
+                             "position":"absolute",
+                             "color":"#"+sColor,
+                             "margin":0,
+                             "padding":oSettings.padding}).children().css({color:"#"+sColor});
 					var iLiW = mLi.width();
 					var iLiH = mLi.height()
 					//
